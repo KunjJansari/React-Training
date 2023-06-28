@@ -1,0 +1,20 @@
+.container-field {
+  display: flex;
+  align-items: center;
+}
+.container-field p{
+  margin-bottom: 0px;
+}
+
+.card-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-title{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
