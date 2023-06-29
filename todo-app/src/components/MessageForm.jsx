@@ -19,11 +19,11 @@ function MessageForm() {
           id="message-form"
           // onChange={(e) => setMessage(e.target.value)}
         />
-        <button type="submit" onClick={submitFunc}>
+        <button type="submit" className="btn btn-primary" onClick={submitFunc}>
           Create
         </button>
       </div>
-      <ListItems messages={message} setMessages={setMessage} />
+      <ListItems messages={message} setMessages={setMessage}/>
     </>
   );
 }

@@ -2,19 +2,25 @@
   display: flex;
   align-items: center;
 }
-.container-field p{
+.container-field p {
   margin-bottom: 0px;
 }
 
-.card-header{
+.card-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.card-title{
+.card-title {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
 
+.textInput {
+  /* width: 100%; */
+  padding: 10px;
+  border: 1px solid #dfdfdf;
+  outline: none;
 }

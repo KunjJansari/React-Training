@@ -3,9 +3,25 @@ import "../listItem.css";
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin5Line } from "react-icons/ri";
 
-function ListItem({ text, heading, index, handleDelete }) {
+function ListItem({ text, heading, index, handleDelete, setUpdate }) {
   console.log("Inside ListItem", heading, index);
   const [title, setTitle] = useState(heading);
+  const [isEditable, setIsEditable] = useState(false);
+  let viewMode = {};
+  let editMode = {};
+  if (isEditable) {
+    viewMode.display = "none";
+  } else {
+    editMode.display = "none";
+  }
+  const handleEditing = () => {
+    setIsEditable(true);
+  };
+  const handleUpdatedDone = (event) => {
+    if (event.key === "Enter") {
+      setIsEditable(false);
+    }
+  };
   // console.log(text);
   function toggleBtn(e) {
     console.log(e.target.checked);
@@ -35,14 +51,31 @@ function ListItem({ text, heading, index, handleDelete }) {
             onChange={toggleBtn}
           />
         </div>
-        <div className="card-body text-primary">
+        <div className="card-body text-primary" style={viewMode}>
           <h5 className="card-title">
             {text}
             <div className="button-container">
-              <FaEdit className="button" />
+              <FaEdit className="button" onClick={handleEditing} />
               <RiDeleteBin5Line onClick={() => handleDelete(index)} />
             </div>
           </h5>
+        </div>
+        <div className="d-flex justify-content-between">
+          <input
+            type="text"
+            value={text}
+            style={editMode}
+            className="textInput w-100"
+            onChange={(e) => setUpdate(e.target.value, index)}
+            onKeyDown={handleUpdatedDone}
+          />
+          <button
+            type="submit"
+            className="textInput btn btn-primary w-30"
+            style={editMode}
+          >
+            Update
+          </button>
         </div>
       </div>
     </>
