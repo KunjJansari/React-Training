@@ -1,27 +1,27 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import "../listItem.css";
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin5Line } from "react-icons/ri";
 
 function ListItem({ text, heading, index }) {
+  console.log("Inside ListItem", heading, index);
+  const [title, setTitle] = useState(heading);
   // console.log(text);
   function toggleBtn(e) {
-    useEffect(() => {
-      console.log(e.target.checked);
-      let buttons = document.querySelectorAll(".button");
-      if (e.target.checked) {
-        heading = "Completed";
-        console.log(heading);
-        buttons.forEach((element) => {
-          element.setAttribute("disabled", "disabled");
-        });
-      } else {
-        heading = "ToDo";
-        buttons.forEach((element) => {
-          element.removeAttribute("disabled");
-        });
-      }
-    });
+    console.log(e.target.checked);
+    let buttons = document.querySelectorAll(".button");
+    if (e.target.checked) {
+      setTitle("Completed");
+      // console.log(heading);
+      buttons.forEach((element) => {
+        element.setAttribute("disabled", "disabled");
+      });
+    } else {
+      setTitle("ToDo");
+      buttons.forEach((element) => {
+        element.removeAttribute("disabled");
+      });
+    }
   }
 
   return (
@@ -32,7 +32,7 @@ function ListItem({ text, heading, index }) {
         key={index}
       >
         <div className="card-header">
-          {heading}
+          {title}
           <input
             type="checkbox"
             name={text}
@@ -50,17 +50,6 @@ function ListItem({ text, heading, index }) {
           </h5>
         </div>
       </div>
-      {/* <div className="container">
-        <div className="container-field" key={index}>
-          <input
-            type="checkbox"
-            name={text}
-            id="checkbox-btn"
-            onChange={toggleBtn}
-          />
-          <p>{text}</p>
-        </div>
-      </div> */}
     </>
   );
 }
