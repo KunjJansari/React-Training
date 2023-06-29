@@ -3,24 +3,19 @@ import "../listItem.css";
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin5Line } from "react-icons/ri";
 
-function ListItem({ text, heading, index }) {
+function ListItem({ text, heading, index, handleDelete }) {
   console.log("Inside ListItem", heading, index);
   const [title, setTitle] = useState(heading);
   // console.log(text);
   function toggleBtn(e) {
     console.log(e.target.checked);
-    let buttons = document.querySelectorAll(".button");
+    let button = document.querySelector(".button");
     if (e.target.checked) {
       setTitle("Completed");
-      // console.log(heading);
-      buttons.forEach((element) => {
-        element.setAttribute("disabled", "disabled");
-      });
+      button.style.display = "none";
     } else {
       setTitle("ToDo");
-      buttons.forEach((element) => {
-        element.removeAttribute("disabled");
-      });
+      button.style.display = "initial";
     }
   }
 
@@ -44,8 +39,8 @@ function ListItem({ text, heading, index }) {
           <h5 className="card-title">
             {text}
             <div className="button-container">
-              <FaEdit />
-              <RiDeleteBin5Line />
+              <FaEdit className="button" />
+              <RiDeleteBin5Line onClick={() => handleDelete(index)} />
             </div>
           </h5>
         </div>

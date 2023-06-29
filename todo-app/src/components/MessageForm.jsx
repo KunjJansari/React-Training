@@ -23,7 +23,7 @@ function MessageForm() {
           Create
         </button>
       </div>
-      <ListItems messages={message} />
+      <ListItems messages={message} setMessages={setMessage} />
     </>
   );
 }
