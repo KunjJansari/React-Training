@@ -23,7 +23,7 @@ function CreateUser() {
   // for creating a new user
   const handleCreate = (e) => {
     e.preventDefault(); // prevent from submitting form/ page refresh
-    name.trim() && surname.trim() && email.trim() && avatar.trim()
+    name.trim() && surname.trim() && email.trim()
       ? axios
           .post(`${baseURL}`, {
             id: data.length + 1,
